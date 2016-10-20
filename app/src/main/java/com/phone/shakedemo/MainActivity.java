@@ -74,24 +74,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getAnimation() {
-        TranslateAnimation translate = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0.5f);
-        translate.setDuration(3000);
-        TranslateAnimation translate2 = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -0.5f);
-        translate2.setStartOffset(1000);
-        translate.setDuration(3000);
-        AnimationSet set = new AnimationSet(false);
-        set.addAnimation(translate);
-        set.addAnimation(translate2);
+
+        //img_up:先上后下,正值向下，参照自身
+        TranslateAnimation a1= new TranslateAnimation(
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,-0.5f
+        );
+        a1.setDuration(500);
+        TranslateAnimation a2= new TranslateAnimation(
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0.5f
+        );
+        a2.setDuration(500);
+        a2.setStartOffset(1000);
+
+        AnimationSet set =new AnimationSet(true);
+        set.addAnimation(a1);
+        set.addAnimation(a2);
         imageUp.startAnimation(set);
 
-        TranslateAnimation translate3 = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -0.5f);
-        translate3.setDuration(3000);
-        TranslateAnimation translate4 = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0.5f);
-        translate4.setStartOffset(1000);
-        translate4.setDuration(3000);
-        AnimationSet set1 = new AnimationSet(false);
-        set1.addAnimation(translate3);
-        set1.addAnimation(translate4);
+
+        //img_down:先下后上,正值向下
+        TranslateAnimation a11= new TranslateAnimation(
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0.5f
+        );
+        a11.setDuration(500);
+        TranslateAnimation a22= new TranslateAnimation(
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,0,
+                Animation.RELATIVE_TO_SELF,-0.5f
+        );
+        a22.setDuration(500);
+        a22.setStartOffset(1000);
+
+        AnimationSet set1 =new AnimationSet(true);
+        set1.addAnimation(a11);
+        set1.addAnimation(a22);
         imageDown.startAnimation(set1);
+
     }
 }
